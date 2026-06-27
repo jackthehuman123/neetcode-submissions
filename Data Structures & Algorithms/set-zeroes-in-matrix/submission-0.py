@@ -1,0 +1,30 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        m = len(matrix)
+        n = len(matrix[0])
+        firstRowZero = False
+        firstColZero = False
+        for r in range(m):
+            if matrix[r][0] == 0:
+                firstColZero = True
+        for c in range(n):
+            if matrix[0][c] == 0:
+                firstRowZero = True
+        for r in range(1, m):
+            for c in range(1, n):
+                if matrix[r][c] == 0:
+                    matrix[r][0] = 0
+                    matrix[0][c] = 0
+                
+        for r in range(1, m):
+            for c in range(1, n):
+                if matrix[r][0] == 0 or matrix[0][c] == 0:
+                    matrix[r][c] = 0
+        
+        if firstRowZero:
+            for c in range(n):
+                matrix[0][c] = 0
+        if firstColZero:
+            for r in range(m):
+                matrix[r][0] = 0
+        
